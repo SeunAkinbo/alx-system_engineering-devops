@@ -2,4 +2,4 @@
 # Bash script to group visitors by IP and
 # HTTP status code from Apache log using awk
 file="apache-access.log"
-awk '{ count[$1" "$9]++ } END { for (key in count) print count[key], key }' $file | sort -nr
+awk -F' ' '{ print $1, $9}' $file | sort | uniq -c|sort -nr
