@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Script displays the content of the current directory in list format
+for file in *; do
+	if [ -f "$file" ] && [[ ! "$file" == .* ]]; then
+		display=$(echo "$file" | cut -d'-' -f2-)
+		echo "$display"
+	fi
+done
