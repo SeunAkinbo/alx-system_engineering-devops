@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Bash script to display specific information from /etc/passwd
-while IFS=':' read -r username password uid gid info home shell; do
+# Bash script to display specific
+# information from /etc/passwd
+while IFS=':' read -r username password uid gid info home shell;
+do
 	echo "$username:$uid:$home"
 done < /etc/passwd
