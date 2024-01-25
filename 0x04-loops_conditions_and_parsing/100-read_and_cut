@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Bash script to display specific
 # information from /etc/passwd
-while IFS=':' read -r username password uid gid info home shell;
+while IFS= read -r line;
 do
-	echo "$username:$uid:$home"
+	echo "$line" | cut -d":" -f1,3,6
 done < /etc/passwd
