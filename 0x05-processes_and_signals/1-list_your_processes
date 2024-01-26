@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # The bash script to display a list of
 # currently running processes
 
