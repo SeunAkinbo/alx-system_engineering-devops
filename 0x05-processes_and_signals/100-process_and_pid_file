@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
-#
+# 
 
 function sig_handler() {
 	case $1 in
 		SIGTERM)
 			echo "I hate the kill command";
-			rm -rf /var/run/_akinbo.pid;
+			rm -rf /var/run/myscript.pid;
 			exit
 			;;
 		SIGINT)
 			echo "Y U no love me?!"
 			;;
 		SIGQUIT)
-			rm -rf /var/run/_seun.pid; exit
+			rm -rf /var/run/myscript.pid; exit
 			;;
 	esac
 }
