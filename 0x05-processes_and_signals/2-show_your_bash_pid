@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Bash script to display lines containing
 # the word "bash" in the process list
 ps auxf | grep bash
