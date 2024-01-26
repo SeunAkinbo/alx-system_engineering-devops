@@ -2,8 +2,8 @@
 # Script that stops 4-to_infinity_and_beyond
 # process without using kill command
 
-pid=$(pgrep -f "4-to_infinity_and_beyond")
+pid=$"4-to_infinity_and_beyond"
 
 if [ -n "$pid" ]; then
-	pkill -TERM -P "$pid"
+	pkill -f "$pid"
 fi
