@@ -16,6 +16,12 @@ int infinite_while(void)
 	return (0);
 }
 
+
+/**
+ * main - The main function
+ * Return: 0 on success 1 otherwise
+ **/
+
 int main(void)
 {
 	pid_t child_pid;
