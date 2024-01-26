@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Script that stops 4-to_infinity_and_beyond
+# process without using kill command
+
+pid=$"7-highlander"
+
+if [ -n "$pid" ]; then
+	pkill -f "$pid"
+fi
