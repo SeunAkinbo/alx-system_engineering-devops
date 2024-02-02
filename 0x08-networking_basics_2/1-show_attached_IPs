@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # The script displays all active IPv4 IPs using ifconfig
 # and filter out loopback addresses
 
