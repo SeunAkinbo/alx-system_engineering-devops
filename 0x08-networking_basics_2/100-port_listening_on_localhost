@@ -2,4 +2,4 @@
 # Script listens on port 98 on localhost
 
 port=98
-nc -l -p $port
+nc -l localhost $port
