@@ -1,6 +1,5 @@
 # Pip installing flask version 2.1.0 using puppet
 
-package {'flask':
+pip3 {'flask':
   ensure   => '2.1.0',
-  provider => 'pip3',
 }
