@@ -1,7 +1,5 @@
 #!/usr/bin/bash
+# The script uses ssh to connect to a server using private key
 
-#Server IP address
 SERVER="100.25.158.83"
-
-# Connects using ssh with single character flags
 ssh -i ~/.ssh/school ubuntu@$SERVER
