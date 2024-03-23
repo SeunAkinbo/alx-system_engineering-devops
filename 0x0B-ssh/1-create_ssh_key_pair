@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # The script creates a 4096 bits RSA key pair saved in
 # school and school.pub in the .ssh, with
-# the betty as the passphrase
+# betty as the passphrase
 
 KEY_NAME="school"
 BITS=4096
 PASSPHRASE="betty"
 
-ssh-keygen -t rsa -b $BITS -N "$PASSPHRASE" -f $KEY_NAME
+ssh-keygen -t rsa -b $BITS -N "$PASSPHRASE" -f ~/.ssh/$KEY_NAME
