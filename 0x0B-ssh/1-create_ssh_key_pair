@@ -3,8 +3,8 @@
 # school and school.pub in the .ssh, with
 # the betty as the passphrase
 
-KEY_NAME="school"
-BITS=4096
-PASSPHRASE="betty"
+#KEY_NAME="school"
+#BITS=4096
+#PASSPHRASE="betty"
 
-ssh-keygen -t rsa -b 4096 -N `betty` -f school
+ssh-keygen -t rsa -b 4096 -N 'betty' -f school
