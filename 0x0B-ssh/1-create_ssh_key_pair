@@ -7,4 +7,4 @@ KEY_NAME="school"
 BITS=4096
 PASSPHRASE="betty"
 
-ssh-keygen -t rsa -b $BITS -N "$PASSPHRASE" -f ~/.ssh/$KEY_NAME
+ssh-keygen -t rsa -b $BITS -N "$PASSPHRASE" -f $KEY_NAME
