@@ -1,5 +1,5 @@
 #!/usr/bin/bash
 # The script uses ssh to connect to a server using private key
+#SERVER="100.25.158.83"
 
-SERVER="100.25.158.83"
-ssh -i ~/.ssh/school ubuntu@$SERVER
+ssh -i ~/.ssh/school ubuntu@100.25.158.83
