@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Connecting ssh client using ssh configuration file to server
+# without typing a password
+
+Host 523760-web-01
+    HostName 100.25.158.83
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
