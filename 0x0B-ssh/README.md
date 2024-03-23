@@ -10,7 +10,7 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 <h2>Resources</h2>
 <h4>Read or watch:</h4>
 <ul>
-  <li>What is a (physical) server - text</li>
+  <li><a href="https://en.wikipedia.org/wiki/Server_%28computing%29#Hardware_requirement">What is a (physical) server - text</a></li>
   <li>What is a (physical) server - video</li>
   <li>SSH essentials</li>
   <li>SSH Config File</li>
@@ -20,7 +20,7 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 </ul>
 <h4>For reference:</h4>
 <ul>
-  <li><a href="https://en.wikipedia.org/wiki/Server_%28computing%29#Hardware_requirement"></a>Understanding the SSH Encryption and Connection Process</a></li>
+  <li>Understanding the SSH Encryption and Connection Process</li>
   <li>Secure Shell Wiki</li>
   <li>IETF RFC 4251 (Description of the SSH Protocol)</li>
   <li>Internet Engineering Task Force</li>
