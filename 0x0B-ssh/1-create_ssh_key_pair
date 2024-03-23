@@ -12,4 +12,4 @@ if [ -f ~/.ssh/$KEY_NAME]; then
 	exit 1
 fi
 
-ssh-keygen -b $BITS -t rsa -f ~/.ssh/$KEY_NAME -N "$PASSPHRASE"
+ssh-keygen -b "$BITS" -t rsa -f ~/.ssh/"$KEY_NAME" -N "$PASSPHRASE"
