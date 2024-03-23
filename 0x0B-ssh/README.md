@@ -57,8 +57,8 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 </ul>
 
 <h2>Your servers</h2>
-<code>
-Name	              Username	    IP	              State	
+
+<code>Name	              Username	        IP	              State	
 523760-web-01	      ubuntu	      100.25.158.83	    running
 </code>
 
@@ -71,8 +71,7 @@ Name	              Username	    IP	              State
   <li>You cannot use -l</li>
   <li>You do not need to handle the case of a private key protected by a passphrase</li>
 </ul>
-<code>
-sylvain@ubuntu$ ./0-use_a_private_key
+<code>sylvain@ubuntu$ ./0-use_a_private_key
 ubuntu@server01:~$ exit
 Connection to 8.8.8.8 closed.
 sylvain@ubuntu$ 
@@ -87,8 +86,7 @@ sylvain@ubuntu$
   <li>The created key must be protected by the passphrase betty</li>
 </ul>
 <h4>Example:</h4>
-<code>
-sylvain@ubuntu$ ls
+<code>sylvain@ubuntu$ ls
 1-create_ssh_key_pair
 sylvain@ubuntu$ ./1-create_ssh_key_pair
 Generating public/private rsa key pair.
@@ -121,8 +119,7 @@ sylvain@ubuntu$
   <li>Your SSH client configuration must be configured to refuse to authenticate using a password</li>
 </ul>
 <h4>Example:</h4>
-<code>
-sylvain@ubuntu$ ssh -v ubuntu@98.98.98.98
+<code>sylvain@ubuntu$ ssh -v ubuntu@98.98.98.98
 OpenSSH_6.6.1, OpenSSL 1.0.1f 6 Jan 2014
 debug1: Reading configuration data /etc/ssh/ssh_config
 debug1: /etc/ssh/ssh_config line 47: Applying options for *
@@ -169,8 +166,7 @@ ubuntu@magic-server:~$
 <h3>Let me in!</h3>
 <p>Now that you have successfully connected to your server, we would also like to join the party.</p>
 <p>Add the SSH public key below to your server so that we can connect using the ubuntu user.</p>
-<code>
-ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNdtrNGtTXe5Tp1EJQop8mOSAuRGLjJ6DW4PqX4wId/Kawz35ESampIqHSOTJmbQ8UlxdJuk0gAXKk3Ncle4safGYqM/VeDK3LN5iAJxf4kcaxNtS3eVxWBE5iF3FbIjOqwxw5Lf5sRa5yXxA8HfWidhbIG5TqKL922hPgsCGABIrXRlfZYeC0FEuPWdr6smOElSVvIXthRWp9cr685KdCI+COxlj1RdVsvIo+zunmLACF9PYdjB2s96Fn0ocD3c5SGLvDOFCyvDojSAOyE70ebIElnskKsDTGwfT4P6jh9OBzTyQEIS2jOaE5RQq4IB4DsMhvbjDSQrP0MdCLgwkN
+<code>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNdtrNGtTXe5Tp1EJQop8mOSAuRGLjJ6DW4PqX4wId/Kawz35ESampIqHSOTJmbQ8UlxdJuk0gAXKk3Ncle4safGYqM/VeDK3LN5iAJxf4kcaxNtS3eVxWBE5iF3FbIjOqwxw5Lf5sRa5yXxA8HfWidhbIG5TqKL922hPgsCGABIrXRlfZYeC0FEuPWdr6smOElSVvIXthRWp9cr685KdCI+COxlj1RdVsvIo+zunmLACF9PYdjB2s96Fn0ocD3c5SGLvDOFCyvDojSAOyE70ebIElnskKsDTGwfT4P6jh9OBzTyQEIS2jOaE5RQq4IB4DsMhvbjDSQrP0MdCLgwkN
 </code>
 
 <h3>Client configuration file (w/ Puppet)</h3>
@@ -182,8 +178,7 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDNdtrNGtTXe5Tp1EJQop8mOSAuRGLjJ6DW4PqX4wId
   <li>Your SSH client configuration must be configured to refuse to authenticate using a password</li>
 </ul>
 <h4>Example:</h4>
-<code>
-vagrant@ubuntu:~$ sudo puppet apply 100-puppet_ssh_config.pp
+<code>vagrant@ubuntu:~$ sudo puppet apply 100-puppet_ssh_config.pp
 Notice: Compiled catalog for ubuntu-xenial in environment production in 0.11 seconds
 Notice: /Stage[main]/Main/File_line[Turn off passwd auth]/ensure: created
 Notice: /Stage[main]/Main/File_line[Declare identity file]/ensure: created
