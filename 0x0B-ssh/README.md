@@ -20,16 +20,24 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 </ul>
 <h4>For reference:</h4>
 <ul>
-  <li>Understanding the SSH Encryption and Connection Process</li>
-  <li>Secure Shell Wiki</li>
-  <li>IETF RFC 4251 (Description of the SSH Protocol)</li>
-  <li>Internet Engineering Task Force</li>
-  <li>Request for Comments</li>
+  <li><a href="https://www.digitalocean.com/community/tutorials/understanding-the-ssh-encryption-and-connection-process">Understanding the SSH Encryption and Connection Process</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Secure_Shell">Secure Shell Wiki</a></li>
+  <li><a href="https://www.ietf.org/rfc/rfc4251.txt">IETF RFC 4251 (Description of the SSH Protocol)</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Internet_Engineering_Task_Force">Internet Engineering Task Force</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Request_for_Comments">Request for Comments</a></li>
 </ul>
 <h4>man or help:</h4>
 <ul>
-  <li>ssh</li>
+  <li><a>ssh</li>
   <li>ssh-keygen</li>
   <li>env</li>
 </ul>
+<h2>Learning Objectives</h2>
+<p>At the end of this project, you are expected to be able to explain to anyone,<b></b>without the help of Google:</b></p>
+
+
+
+
+
+
 
