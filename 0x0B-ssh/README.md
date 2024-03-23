@@ -6,7 +6,7 @@
 
 You can access your server information in the <a href="https://intranet.alxswe.com/servers">my servers</a> section of the intranet, each line with contains the IP and username you should use to connect via ssh.
 
-<em>Note:</em> Your server is configured with an Ubuntu 20.04 LTS environment.</p>
+<b>Note:</b> Your server is configured with an Ubuntu 20.04 LTS environment.</p>
 <h2>Resources</h2>
 <h4>Read or watch:</h4>
 <ul>
@@ -20,9 +20,16 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 </ul>
 <h4>For reference:</h4>
 <ul>
-  <li>Understanding the SSH Encryption and Connection Process</li>
+  <li><a href="https://en.wikipedia.org/wiki/Server_%28computing%29#Hardware_requirement"></a>Understanding the SSH Encryption and Connection Process</a></li>
   <li>Secure Shell Wiki</li>
   <li>IETF RFC 4251 (Description of the SSH Protocol)</li>
   <li>Internet Engineering Task Force</li>
   <li>Request for Comments</li>
 </ul>
+<h4>man or help:</h4>
+<ul>
+  <li>ssh</li>
+  <li>ssh-keygen</li>
+  <li>env</li>
+</ul>
+
