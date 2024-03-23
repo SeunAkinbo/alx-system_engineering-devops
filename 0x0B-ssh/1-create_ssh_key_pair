@@ -7,4 +7,9 @@ KEY_NAME="school"
 BITS=4096
 PASSPHRASE="betty"
 
-ssh-keygen -t rsa -b $BITS -N $PASSPHRASE -f ~/.ssh/$KEY_NAME
+if [ -f ~/.ssh/$KEY_NAME]; then
+	echo "Key '$KEY_NAME' already exists. Aborting."
+	exit 1
+fi
+
+ssh-keygen -b $BITS -t rsa -f ~/.ssh/$KEY_NAME -N "$PASSPHRASE"
