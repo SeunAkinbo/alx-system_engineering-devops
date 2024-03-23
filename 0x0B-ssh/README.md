@@ -58,9 +58,8 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 
 <h2>Your servers</h2>
 
-<code>
-<p><b>Name	              Username	     IP	                 State  </b><p>
-<p>523760-web-01	      ubuntu	      100.25.158.83	    running</p>
+<code><b>Name	              Username	     IP	                 State  </b>
+523760-web-01	      ubuntu	      100.25.158.83	    running
 </code>
 
 <h2>Tasks</h2>
