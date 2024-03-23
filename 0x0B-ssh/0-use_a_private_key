@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 # The script uses ssh to connect to a server using private key
 
 SERVER="100.25.158.83"
