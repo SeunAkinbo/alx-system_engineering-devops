@@ -8,7 +8,7 @@ You can access your server information in the <a href="https://intranet.alxswe.c
 
 <em>Note:</em> Your server is configured with an Ubuntu 20.04 LTS environment.</p>
 <h2>Resources</h2>
-<h4>Read or watch</h4>
+<h4>Read or watch:</h4>
 <ul>
   <li>What is a (physical) server - text</li>
   <li>What is a (physical) server - video</li>
@@ -17,4 +17,12 @@ You can access your server information in the <a href="https://intranet.alxswe.c
   <li>Public Key Authentication for SSH</li>
   <li>How Secure Shell Works</li>
   <li>SSH Crash Course (Long, but highly informative. Watch this if configuring SSH is still confusing. It may be helpful to watch at x1.25 speed or above.)</li>
+</ul>
+<h4>For reference:</h4>
+<ul>
+  <li>Understanding the SSH Encryption and Connection Process</li>
+  <li>Secure Shell Wiki</li>
+  <li>IETF RFC 4251 (Description of the SSH Protocol)</li>
+  <li>Internet Engineering Task Force</li>
+  <li>Request for Comments</li>
 </ul>
