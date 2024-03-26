@@ -1,66 +1,93 @@
-# Puppet script to configure Nginx server
-
 # Install Nginx package
 package { 'nginx':
-  ensure => installed,
+  ensure => present,
 }
 
-# Set file paths
-$ERROR_404_FILE = '/var/www/html/page_404.html'
-$NGINX_CONF = '/etc/nginx/sites-available/default'
-$FILE_PATH = '/var/www/html/index.html'
-
-# Create index file with 'Hello World!'
-file { $FILE_PATH:
-  ensure  => file,
-  content => 'Hello World!',
+# Ensure directories exist
+file { [
+  '/var/www/html',
+  '/etc/nginx/sites-available',
+]:
+  ensure => directory,
 }
 
-# Start Nginx service
+# Create index.html with "Hello World!" content
+file { '/var/www/html/index.html':
+  ensure  => present,
+  content => "Hello World!",
+  owner   => root,
+  group   => root,
+  mode    => '0644',
+}
+
+# Create custom 404 page with content
+file { '/var/www/html/page_404.html':
+  ensure  => present,
+  content => "Ceci n'est pas une page",
+  owner   => root,
+  group   => root,
+  mode    => '0644',
+}
+
+# Open firewall port for Nginx (adjust service name if needed)
+firewall {
+  rule {
+    name    => 'Open Nginx port',
+    service => 'http',
+    action  => accept,
+  }
+}
+
+# Configure ownership and permissions for webroot
+file { '/var/www/html':
+  owner => '$::user',  # Use $::user for current user
+  group => '$::user',  # Use $::user for current user
+  mode  => '0755',
+}
+
+# Manage Nginx configuration using a template
+file { '/etc/nginx/sites-available/default':
+  ensure  => present,
+  content => template('nginx/default.erb'),
+  owner   => 'root',
+  group   => 'root',
+  mode    => '0644',
+}
+
+# Define template content (nginx/default.erb)
+template 'nginx/default.erb' {
+  content <<EOF
+server {
+  listen 80;
+  server_name _;
+
+  # Serve static content from this directory
+  root /var/www/html;
+
+  # Include custom 404 page
+  error_page 404 /page_404.html;
+
+  # Redirect for /redirect_me to YouTube video
+  rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
+
+  # Default location block
+  location / {
+    try_files $uri $uri/ /index.html;
+  }
+
+  # Access logging
+  access_log /var/log/nginx/access.log;
+}
+EOF
+}
+
+# Restart Nginx service
 service { 'nginx':
   ensure  => running,
   enable  => true,
-  require => Package['nginx'],
+  require => [
+    Package['nginx'],
+    File['/etc/nginx/sites-available/default'],
+  ],
 }
 
-# Allow Nginx through firewall
-firewall { '100 Allow nginx access':
-  port   => 80,
-  proto  => 'tcp',
-  action => 'accept',
-}
-
-# Set permissions for Nginx directories
-file { '/var/www/html':
-  ensure  => directory,
-  recurse => true,
-  owner   => $USER,
-  group   => $USER,
-  mode    => '755',
-}
-
-# Configure Nginx redirection and custom 404 page
-file_line { 'nginx_redirection':
-  path   => $NGINX_CONF,
-  line   => "    rewrite /redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;",
-  after  => "server_name _;",
-  notify => Service['nginx'],
-}
-
-file_line { 'nginx_custom_404':
-  path   => $NGINX_CONF,
-  line   => "    error_page 404 /page_404.html;",
-  after  => "server_name _;",
-  notify => Service['nginx'],
-}
-
-file { $ERROR_404_FILE:
-  ensure  => file,
-  content => "Ceci n'est pas une page\n",
-}
-
-# Restart Nginx service after configuration changes
-exec { 'nginx_restart':
-  command     => 'service nginx restart',
-  refreshonly => true,
-}
