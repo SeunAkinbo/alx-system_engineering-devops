@@ -1,9 +1,10 @@
 # Puppet script to configure Nginx server
 
+include ::stdlib
 
 # Install nginx package
 package { 'nginx':
-  ensure  => installed,
+  ensure  => installed
 }
 
 # Installing nginx package
@@ -25,18 +26,22 @@ file { '/etc/nginx/sites-available/default':
 		rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 	}",
   notify  => Service['nginx'],
-  require => Package['nginx'],
+  require => Package['nginx']
 }
 
 #Define the index.html file content
 file { '/var/www/html/index.html':
   ensure  =>  'file',
   content =>  'Hello World!',
-  require =>  Package['nginx'],
+  require =>  Package['nginx']
 }
 
-# Ensure nginx is running
-exec { 'run':
-  command  => 'sudo service nginx restart',
-  provider => shell,
+# Ensure nginx is running and restart if necessary
+service { 'nginx':
+  ensure  => running,
+  enable  => true,
+  require => Package['nginx']
 }
+
+# Notify nginx service restart when the configuration changes
+File['/etc/nginx/sites-available/default'] -> Service['nginx']
