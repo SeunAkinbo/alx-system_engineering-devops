@@ -1,5 +1,4 @@
-# Configuring your server with Puppet
-# Nginx should be listening on port 80
+# Puppet script to configure Nginx server
 
 include stdlib
 
@@ -7,12 +6,17 @@ package { 'nginx':
   ensure  => installed,
 }
 
+# Set file paths
+$FILE_PATH = '/var/www/html/index.html'
+$NGINX_CONF = '/etc/nginx/sites-available/default'
+
+# Installing nginx
 exec { 'install nginx':
   command  => 'sudo apt -y update && sudo apt -y install nginx',
   provider => shell,
 }
 
-file { '/etc/nginx/sites-available/default':
+file { $NGINX_CONF:
   content => "server {
 		listen 80 default_server;
 		server_name _;
@@ -25,7 +29,7 @@ file { '/etc/nginx/sites-available/default':
   require => Exec['install nginx'],
 }
 
-file { '/var/www/html/index.html':
+file { $FILE_PATH:
   ensure  =>  'file',
   content =>  'Hello World!',
   require =>  Exec['install nginx'],
@@ -34,5 +38,4 @@ file { '/var/www/html/index.html':
 exec { 'run':
   command  => 'sudo service nginx restart',
   provider => shell,
-  #require  => File['/etc/nginx/sites-available/default'],
 }
