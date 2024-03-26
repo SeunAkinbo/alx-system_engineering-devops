@@ -16,7 +16,7 @@ exec { 'install nginx':
   provider => shell,
 }
 
-file { $NGINX_CONF:
+file { "$NGINX_CONF":
   content => "server {
 		listen 80 default_server;
 		server_name _;
@@ -29,7 +29,7 @@ file { $NGINX_CONF:
   require => Exec['install nginx'],
 }
 
-file { $FILE_PATH:
+file { "$FILE_PATH":
   ensure  =>  'file',
   content =>  'Hello World!',
   require =>  Exec['install nginx'],
