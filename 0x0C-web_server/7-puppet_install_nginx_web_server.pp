@@ -6,17 +6,13 @@ package { 'nginx':
   ensure  => installed,
 }
 
-# Set file paths
-$FILE_PATH = '/var/www/html/index.html'
-$NGINX_CONF = '/etc/nginx/sites-available/default'
-
 # Installing nginx
 exec { 'install nginx':
   command  => 'sudo apt -y update && sudo apt -y install nginx',
   provider => shell,
 }
 
-file { "$NGINX_CONF":
+file { '/etc/nginx/sites-available/default':
   content => "server {
 		listen 80 default_server;
 		server_name _;
@@ -29,7 +25,7 @@ file { "$NGINX_CONF":
   require => Exec['install nginx'],
 }
 
-file { "$FILE_PATH":
+file { '/var/www/html/index.html':
   ensure  =>  'file',
   content =>  'Hello World!',
   require =>  Exec['install nginx'],
