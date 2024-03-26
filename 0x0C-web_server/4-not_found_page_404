@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Installing nginx on default port using apt-get
+
+# Installation of nginx using the get
+sudo apt-get update -y
+sudo apt-get install nginx -y
+
+# Set file paths
+INDEX_FILE_PATH="/var/www/html/index.html"
+ERROR_404_FILE="/var/www/html/error_404.html"
+NGINX_CONF="/etc/nginx/sites-available/default"
+
+# Updating the index file to display 'Hello World!'
+echo "Hello World!" | sudo tee $INDEX_FILE_PATH > /dev/null
+
+# Setting up / redirect ao a youtube video
+sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' $NGINX_CONF
+
+# Setting up a custom 404 page
+echo "Ceci n'est pas une page" >> $ERROR_404_FILE
+sudo sed -i '25i\	error_page 404 /error_404.html;' $NGINX_CONF
+
+# Restarting nginx
+sudo service nginx restart
