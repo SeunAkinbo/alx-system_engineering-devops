@@ -8,6 +8,11 @@ sudo apt-get install nginx -y
 # Set file paths
 ERROR_404_FILE="/var/www/html/page_404.html"
 NGINX_CONF="/etc/nginx/sites-available/default"
+FILE_PATH="/var/www/html/index.html"
+
+
+# Creating an index file that displays 'Hello World!'
+sudo bash -c "echo 'Hello World!' > $FILE_PATH"
 
 
 # Setting write authorization procedure
@@ -19,15 +24,6 @@ sudo chmod -R 755 /var/www
 
 # Setting up / redirect to a youtube video
 sudo sed -i '/server_name _;/a\         rewrite \/redirect_me https:\/\/www.youtube.com\/watch?v=QH2-TGUlwu4 permanent;' "$NGINX_CONF"
-
-
-#sed -i '/server_name _;/a\
-#        rewrite \/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
-#        error_page 404 \/page_404.html;
-#       location \/page_404.html {
-#           root \/var\www\/html;
-#           internal;
-#        }' $NGINX_CONF
 
 
 # Setting up a custom 404 page
