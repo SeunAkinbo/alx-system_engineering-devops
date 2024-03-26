@@ -10,16 +10,6 @@ ERROR_404_FILE="/var/www/html/error_404.html"
 NGINX_CONF="/etc/nginx/sites-available/default"
 
 
-# Creating an index file that displays 'Hello World!'
-FILE_PATH="/var/www/html/index.html"
-sudo bash -c "echo 'Hello World!' > $FILE_PATH"
-
-
-# Setting up a custom 404 page
-echo "Ceci n'est pas une page" >> "$ERROR_404_FILE"
-sudo sed -i '/server_name _;/a\       error_page 404 /error_404.html;' $NGINX_CONF
-
-
 # Setting up / redirect to a youtube video
 sed -i '/server_name _;/a\
         rewrite \/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
@@ -28,6 +18,11 @@ sed -i '/server_name _;/a\
            root \/var\www\/html;
            internal;
         }' $NGINX_CONF
+
+
+# Setting up a custom 404 page
+echo "Ceci n'est pas une page" >> "$ERROR_404_FILE"
+sudo sed -i '/server_name _;/a\       error_page 404 /error_404.html;' $NGINX_CONF
 
 
 # Restarting nginx
