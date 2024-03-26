@@ -14,11 +14,11 @@ NGINX_CONF="/etc/nginx/sites-available/default"
 echo "Hello World!" | sudo tee $INDEX_FILE_PATH > /dev/null
 
 # Setting up / redirect ao a youtube video
-sudo sed -i '24i\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' $NGINX_CONF
+sudo sed -i '/^ *server {/a\	rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;' $NGINX_CONF
 
 # Setting up a custom 404 page
 echo "Ceci n'est pas une page" >> $ERROR_404_FILE
-sudo sed -i '25i\	error_page 404 /error_404.html;' $NGINX_CONF
+sudo sed -i '/^ *server {/a\	error_page 404 /error_404.html;' $NGINX_CONF
 
 # Restarting nginx
 sudo service nginx restart
