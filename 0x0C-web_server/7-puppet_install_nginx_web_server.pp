@@ -1,6 +1,6 @@
 # Puppet script to configure Nginx server
 
-include stdlib
+#include stdlib
 
 package { 'nginx':
   ensure  => installed,
