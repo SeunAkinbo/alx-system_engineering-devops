@@ -1,26 +1,10 @@
 #!/usr/bin/env bash
-# A script that installs nginx on web-01 server
-# default port 80. The GET query with curl must
-# return a page with a string Hello World!
+# Installing nginx on default port using apt-get
 
-# Update package repository and install nginx with '-y' option
-sudo apt-get update -y -qq
+sudo apt-get update -y
 sudo apt-get install nginx -y
 
+FILE_PATH="/var/www/html/index.html"
+sudo bash -c "echo 'Hello World!' > $FILE_PATH"
 
-# Starting nginx and allowing traffic on port 80
-sudo service nginx start
-sudo ufw allow 'Nginx HTTP'
-
-# Assigning ownership for ease of editing and creating
-sudo chown -R "$USER":"$USER" /var/www/html
-sudo chmod -R 755 /var/www
-
-# Backup default index
-cp /var/www/html/index.nginx-debian.html /var/www/html/index.nginx-debian.html.bckp
-
-# Creating new index
-echo -e "Hello World!" | dd status=none of=/var/www/html/index.nginx-debian.html
-
-# Restart or Reload nginx without using systemctl
 sudo service nginx restart
