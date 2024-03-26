@@ -1,19 +1,26 @@
 #!/usr/bin/env bash
 # Installing nginx on default port using apt-get
 
-# Installation of nginx using the get
-sudo apt-get update -y
-sudo apt-get install nginx -y
+# Error checking
+if ! command -v nginx &>/dev/null; then
+    echo "Error: Nginx is not installed." >&2
+    exit 1
+fi
 
 # Set file paths
 ERROR_404_FILE="/var/www/html/error_404.html"
 NGINX_CONF="/etc/nginx/sites-available/default"
+NGINX_CONF_BACKUP="/etc/nginx/sites-available/default.backup"
 
-# Setting up a custom 404 page
-echo "Ceci n'est pas une page" >> "$ERROR_404_FILE"
-# sudo sed -i '/server_name _;/a\       error_page 404 /error_404.html;' $NGINX_CONF
+# Create backup of nginx configuration file
+cp "$NGINX_CONF" "$NGINX_CONF_BACKUP"
 
-# Setting up / redirect to a youtube video
+# Check if error page file exists, if not, create it
+if [ ! -f "$ERROR_404_FILE" ]; then
+    echo "Ceci n'est pas une page" > "$ERROR_404_FILE"
+fi
+
+# Update nginx configuration with custom error page and redirects
 sed -i '/server_name _;/r /dev/stdin' "$NGINX_CONF" <<EOF
     error_page 404 /error_404.html;
     location /error_404.html {
@@ -23,5 +30,10 @@ sed -i '/server_name _;/r /dev/stdin' "$NGINX_CONF" <<EOF
     rewrite ^/redirect_me https://www.youtube.com/watch?v=QH2-TGUlwu4 permanent;
 EOF
 
-# Restarting nginx
-sudo service nginx restart
+# Check if configuration was modified before restarting nginx
+if ! cmp -s "$NGINX_CONF" "$NGINX_CONF_BACKUP"; then
+    sudo service nginx restart
+    echo "Nginx restarted."
+else
+    echo "No changes made to Nginx configuration."
+fi
